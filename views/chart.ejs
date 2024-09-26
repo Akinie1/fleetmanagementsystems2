@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* I always reset all the html elements */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            min-height: 100vh;
+            color: #555;
+            background-color: #fff;
+            text-align: center; /* Center align the content */
+        }
+
+        .color-legend {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        /* Corrected the class to match the canvas ID */
+        .chart-container {
+            max-width: 00px; /* Reduced width */
+            height: 500px; /* Reduced height */
+            padding: 10px; /* Reduced padding */
+            margin: 0 auto;
+        }
+
+        .color-legend div {
+            width: 15px; /* Width of color bars */
+            height: 15px; /* Height of color bars */
+            margin: 0 3px; /* Spacing between bars */
+            border: 1px solid #000; /* Optional border */
+        }
+
+        h3 {
+            font-size: 18px; /* Smaller heading */
+            margin-bottom: 10px; /* Spacing below heading */
+        }
+
+        .chart .chart_types {
+            text-align: center;
+            margin-bottom: 15px; /* Reduced margin */
+        }
+
+        .chart .chart_types button {
+            padding: 8px 10px; /* Adjusted button padding */
+            font-size: 14px; /* Smaller button font */
+        }
+    </style>
+</head>
+<body>
+    <h3>Vehicle Count Chart</h3>
+
+    <!-- Color Legend -->
+    <div class="color-legend" id="colorLegend"></div>
+
+    <div class="chart-container"> <!-- Changed to use a class for styling -->
+        <canvas id="vehicleChart"></canvas>
+    </div>
+
+    <!-- Pass the countedBrands data to the script through a hidden div -->
+    <div id="countedBrandsData" data-brands='<%= JSON.stringify(countedBrands) %>'></div>
+
+    <script>
+        // Once the DOM is ready, read the data from the hidden div
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the countedBrands data from the hidden div's data attribute
+            const countedBrands = JSON.parse(document.getElementById('countedBrandsData').getAttribute('data-brands'));
+
+            // Create the chart using the countedBrands data
+            const labels = countedBrands.map(item => item.brand);
+            const dataCounts = countedBrands.map(item => item.count);
+
+            // Define different colors for each dataset
+            const colors = [
+                'rgba(255, 99, 132, 0.5)', // Red
+                'rgba(54, 162, 235, 0.5)', // Blue
+                'rgba(255, 206, 86, 0.5)', // Yellow
+                'rgba(75, 192, 192, 0.5)', // Teal
+                'rgba(153, 102, 255, 0.5)' // Purple
+            ];
+
+            const ctx = document.getElementById('vehicleChart').getContext('2d');
+            const vehicleChart = new Chart(ctx, {
+                type: 'pie', // or 'line', 'pie', etc.
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Number of Vehicles',
+                        data: dataCounts,
+                        backgroundColor: colors.slice(0, countedBrands.length), // Use colors based on data length
+                        borderColor: colors.slice(0, countedBrands.length).map(color => color.replace(/0.5/, '1')), // Solid border colors
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false, // Allows the chart to adjust according to the container size
+                }
+            });
+
+            // Create color legend
+            const colorLegend = document.getElementById('colorLegend');
+            countedBrands.forEach((item, index) => {
+                const colorDiv = document.createElement('div');
+                colorDiv.style.backgroundColor = colors[index % colors.length]; // Use color based on index
+                colorLegend.appendChild(colorDiv);
+            });
+        });
+    </script>
+</body>
+</html>

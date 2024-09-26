@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+}
+
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.vehicle-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vehicle-table th, .vehicle-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: #555;
+}
+
+.vehicle-table th {
+    background-color: #f8f8f8;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.vehicle-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.action-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.update-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.update-btn:hover {
+    background-color: #45a049;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #e53935;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .vehicle-table th, .vehicle-table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .action-btn {
+        padding: 8px 12px;
+    }
+}
+
+.no-vehicles-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa; /* Light background for visibility */
+    border: 1px solid #dee2e6; /* Subtle border */
+    padding: 40px 30px; /* Comfortable padding */
+    border-radius: 10px; /* Slightly rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow */
+    max-width: 400px; /* Width for a tidy layout */
+    margin: 20px auto; /* Centered with margin */
+}
+
+.no-vehicles-message h2 {
+    margin-bottom: 15px; /* Space below heading */
+    font-size: 24px; /* Standard size for headings */
+    color: #333; /* Dark color for readability */
+}
+
+.no-vehicles-message p {
+    font-size: 16px; /* Standard text size */
+    color: #555; /* Medium gray for secondary text */
+    margin-bottom: 20px; /* Space below the paragraph */
+}
+
+.back-btn {
+    padding: 10px 20px; /* Padding for button */
+    background-color: #007bff; /* Primary button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* No underline */
+    font-size: 16px; /* Font size for readability */
+    transition: background-color 0.3s; /* Transition effect */
+}
+
+.back-btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}

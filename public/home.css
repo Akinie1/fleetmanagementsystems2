@@ -1,0 +1,770 @@
+/* General Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f4f4;
+}
+
+/* Header */
+header {
+    background-color: #090263;
+    color: white;
+    padding: 15px 20px;
+    border-bottom: 3px solid #0033aa;
+}
+
+header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav a:hover {
+    background-color: #0033aa;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+/* Welcome Section */
+.welcome {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.welcome h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #0044cc;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.stat-item {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.stat-item h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.stat-item p {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0 0;
+    color: #0044cc;
+}
+
+/* Features Section */
+.features {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 900px;
+}
+
+.features .button {
+    display: inline-block;
+    background-color: #0044cc;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 5px;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.features .button:hover {
+    background-color: #0033aa;
+    transform: translateY(-2px);
+}
+
+/* Login Section */
+.login {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.login h2 {
+    margin: 0;
+    font-size: 22px;
+    color: #0044cc;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.login input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.login button {
+    background-color: #0044cc;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.login button:hover {
+    background-color: #0033aa;
+    transform: translateY(-2px);
+}
+
+.note {
+    font-size: 12px;
+    color: #555;
+    margin-top: 10px;
+}
+
+
+
+/* Modal Overlay */
+.modal-overlay {
+    display: flex; /* Use flex to center the modal */
+    position: fixed; /* Fix it to the viewport */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    justify-content: center; /* Center the modal horizontally */
+    align-items: center; /* Center the modal vertically */
+    z-index: 999; /* On top of other content */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fff; /* White background for the modal */
+    padding: 20px; /* Inner padding */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    max-width: 500px; /* Max width of the modal */
+    width: 90%; /* Responsive width */
+    position: relative; /* Positioning for close button */
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute; /* Position it in the top right corner */
+    top: 10px; /* Distance from the top */
+    right: 10px; /* Distance from the right */
+    font-size: 24px; /* Size of the close button */
+    color: #ff0000; /* Red color for visibility */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: color 0.3s; /* Smooth color change */
+}
+
+.close-btn:hover {
+    color: #cc0000; /* Darker red on hover */
+}
+
+/* Modal Heading */
+.modal-content h2 {
+    margin: 0 0 15px; /* Margin below the heading */
+    font-size: 20px; /* Font size for the heading */
+    color: #333; /* Darker text color */
+}
+
+/* Modal Text */
+.modal-content p {
+    margin-bottom: 20px; /* Margin below the text */
+    font-size: 16px; /* Font size for the paragraph */
+    color: #555; /* Lighter text color */
+}
+
+/* Button styles inside modal */
+.modal-content .btn {
+    display: inline-block; /* Inline-block for button styling */
+    background-color: #0044cc; /* Button color */
+    color: white; /* Text color */
+    padding: 10px 15px; /* Padding for buttons */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.modal-content .btn:hover {
+    background-color: #0033aa; /* Darker button color on hover */
+}
+
+
+
+
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 28px; /* Larger close button for easier access */
+    color: #333; /* Dark color for better contrast */
+    cursor: pointer;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.close-btn:hover {
+    color: #ff4d4d; /* Bright red color for hover effect */
+}
+
+/* Additional styling for smooth appearance */
+.modal-overlay.show {
+    opacity: 1;
+}
+
+.modal-overlay.hide {
+    opacity: 0;
+}
+
+
+
+
+
+/* Footer */
+footer {
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+
+footer a {
+    color: #0044cc;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Success Overlay Styles */
+.success-overlay {
+    position: fixed; /* Ensures it stays on screen during scrolling */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark overlay with transparency */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* High z-index to ensure it appears above everything */
+}
+
+/* Success Popup Styles */
+.success-content {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    animation: fadeInPopup 0.5s ease-in-out;
+}
+
+.success-popup h2 {
+    color: #28a745; /* Success green color */
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.success-popup p {
+    font-size: 18px;
+    color: #555555;
+    margin-bottom: 30px;
+}
+
+/* Button Styles */
+.success-popup-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.success-popup-buttons .btn {
+    text-decoration: none;
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #007bff; /* Blue for action buttons */
+    color: #ffffff;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.success-popup-buttons .btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 8px 20px rgba(0, 91, 179, 0.2);
+}
+
+.success-popup-buttons .btn-home {
+    background-color: #17a2b8; /* Lighter blue for home button */
+}
+
+.success-popup-buttons .btn-home:hover {
+    background-color: #117a8b;
+}
+
+/* Fade-in Animation */
+@keyframes fadeInPopup {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.btn {
+    text-decoration: none;
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #007bff; /* Blue button */
+    color: #ffffff;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 8px 20px rgba(0, 91, 179, 0.2);
+}
+
+.btn-home {
+    background-color: #17a2b8; /* Light blue for Home button */
+}
+
+.btn-home:hover {
+    background-color: #117a8b;
+    box-shadow: 0 8px 20px rgba(17, 122, 139, 0.2);
+}
+
+/* Animation */
+@keyframes fadeInPopup {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .success-popup-content {
+        padding: 30px;
+    }
+
+    .success-popup h2 {
+        font-size: 22px;
+    }
+
+    .success-popup p {
+        font-size: 16px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+/* Vehicle Count Chart */
+#vehicle-count-chart {
+    z-index: 1; /* Ensure the chart has a lower z-index */
+}
+
+/* Vehicle Success Message */
+#vehicle-success-message {
+    z-index: 10; /* Set this to a lower value than the modal and popup */
+}
+
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color:#0044cc ; /* Button color */
+    color: white; /* Text color */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    font-size: 16px;
+}
+
+.custom-file-upload:hover {
+    background-color: #0056b3; /* Darker color on hover */
+    transform: scale(1.05); /* Slightly enlarge the button */
+}
+
+input[type="file"] {
+    display: none; /* Hide the default file input */
+}
+
+
+/* THis is the driver login and register styles  */
+
+
+
+/* Auth Section Styling */
+.auth-section {
+    width: 600px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.auth-section h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.auth-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.auth-section label {
+    font-size: 15px;
+    color: #555;
+    text-align: left;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.auth-section input[type="email"],
+.auth-section input[type="password"],
+.auth-section input[type="text"] {
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #dcdfe6;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fafafa;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.auth-section input:focus {
+    border-color: #3498db;
+    background-color: #ffffff;
+    outline: none;
+}
+
+.auth-section button[type="submit"],
+.auth-section button[type="button"] {
+    padding: 14px;
+    background-color: #3498db;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    text-align: center;
+    font-weight: 500;
+}
+
+.auth-section button[type="submit"]:hover,
+.auth-section button[type="button"]:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.auth-section button[type="submit"]:active,
+.auth-section button[type="button"]:active {
+    transform: translateY(0);
+}
+
+.auth-section .note {
+    font-size: 14px;
+    color: #888;
+    margin-top: 15px;
+}
+
+/* Toggle Button Styling */
+#toggleAuthButton {
+    margin-top: 25px;
+    background-color: #2ecc71;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#toggleAuthButton:hover {
+    background-color: #27ae60;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .auth-section {
+        width: 90%;
+        padding: 30px;
+    }
+
+    .auth-section h2 {
+        font-size: 28px;
+    }
+
+    .auth-section button[type="submit"],
+    .auth-section button[type="button"] {
+        font-size: 16px;
+    }
+}
+
+
+#loginFields label,
+#registerFields label {
+    display: block;
+    margin-bottom: 15px;  /* Space between label and input */
+    margin-top : 15px;
+    font-weight: bold;
+}
+
+header nav a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+header nav a:hover {
+    background-color: #ddd;
+}
+
+.logout-btn {
+    background-color: #ff6666;
+    color: white;
+    font-weight: bold;
+    margin-left: auto; /* Push it to the far right */
+}
+
+.logout-btn:hover {
+    background-color: #ff4d4d;
+}
+
+      /* I always reset all the html elements */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: sans-serif;
+        min-height: 100vh;
+        color: #555;
+        background-color: #fff;
+        text-align: center; /* Center align the content */
+    }
+
+    .color-legend {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .chart-container {
+        position: relative; /* Allow for absolute positioning of inner elements */
+        max-width: 400px; /* Reduced width */
+        height: 500px; /* Reduced height */
+        padding: 10px; /* Reduced padding */
+        margin: 0 auto;
+    }
+
+    .color-legend div {
+        width: 15px; /* Width of color bars */
+        height: 15px; /* Height of color bars */
+        margin: 0 3px; /* Spacing between bars */
+        border: 1px solid #000; /* Optional border */
+    }
+
+    h3 {
+        font-size: 18px; /* Smaller heading */
+        margin-bottom: 10px; /* Spacing below heading */
+    }
+
+    .chart .chart_types {
+        text-align: center;
+        margin-bottom: 15px; /* Reduced margin */
+    }
+
+    .chart .chart_types button {
+        padding: 8px 10px; /* Adjusted button padding */
+        font-size: 14px; /* Smaller button font */
+    }
+
+    /* Styles for the background lines */
+    .background-lines {
+        position: absolute; /* Position it over the chart */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none; /* Prevent interactions */
+    }
+
+        /* I always reset all the html elements */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        body {
+            font-family: sans-serif;
+            min-height: 100vh;
+            color: #555;
+            background-color: #fff;
+            text-align: center; /* Center align the content */
+        }
+    
+        .color-legend {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+    
+        /* Increased width and height of the chart container */
+        .chart-container {
+            width: 1000px; /* Increased width */
+            height: 500px; /* Increased height */
+            padding: 1px; /* Padding */
+            /* margin: 0 auto; Center the container */
+            /* position: relative; Enable absolute positioning for the canvases */
+        }
+    
+        .color-legend div {
+            width: 100px; /* Width of color bars */
+            height: 15px; /* Height of color bars */
+            margin: 0 6px; /* Spacing between bars */
+            border: 1px solid #000; /* Optional border */
+        }
+    
+        h3 {
+            font-size: 18px; /* Smaller heading */
+            margin-bottom: 10px; /* Spacing below heading */
+        }
+    
+        .chart .chart_types {
+            text-align: center;
+            margin-bottom: 15px; /* Reduced margin */
+        }
+    
+        
+    
+        /* Added styles to position the background lines behind the pie chart */
+        .background-lines {
+            position: absolute; /* Position it absolutely within the container */
+            top: 0; /* Align to the top */
+            left: 0; /* Align to the left */
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            z-index: 1; /* Behind the pie chart */
+        }
+    
+        /* Ensure the pie chart is on top */
+        canvas#vehicleChart {
+            position: relative;
+            z-index: 2; /* Above the background lines */
+            /* Added to increase the line width of the chart */
+            border: 2px; /*Increased border width for graph lines */
+        }

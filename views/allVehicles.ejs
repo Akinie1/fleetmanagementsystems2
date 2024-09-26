@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle List</title>
+    <link rel="stylesheet" href="allVehicles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Fleet Vehicle List</h1>
+        <table class="vehicle-table">
+            <thead>
+                <tr>
+                    <th>Owner</th>
+                    <th>Brand</th>
+                    <th>License Plate</th>
+                    <th>Color</th>
+                    <th>Type</th>
+                    <th>Manufacture Year</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(vehicleCount) { %>
+                <% vehicles.forEach(vehicle => { %>
+                    <tr>
+                        <td><%= vehicle.ownerName %></td>
+                        <td><%= vehicle.vehicleBrand %></td>
+                        <td><%= vehicle.registrationNumber %></td>
+                        <td><%= vehicle.color %></td>
+                        <td><%= vehicle.vehicleType %></td>
+                        <td><%= vehicle.manufactureYear %></td>
+                        <td>
+                            <button class="action-btn update-btn" id="openModal" data-doc="<%= vehicle._id %>" >Update</button>
+                            <button class="action-btn delete-btn" data-doc="<%=vehicle._id%>">Delete</button>
+                        </td>
+                    </tr>
+                <% }); %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="7" style="text-align: center; padding: 30px;">
+                            <div class="no-vehicles-message">
+                                <h2>No Vehicles Available</h2>
+                                <p>Please check back later or register a new vehicle.</p>
+                                <a href="/" class="back-btn">Back to Home</a> <!-- Back button -->
+                            </div>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+     <!-- Modal (Popup) -->
+     <div class="modal-overlay" id="modalOverlay" style="display: none;">
+        <div class="modal-content">
+            <!-- Content will be loaded here -->
+            <span class="close-btn" id="closeModal">&times;</span>
+        </div>
+    </div>
+    <script src="updateScript.js">
+    </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<%- include('../partials/head.ejs') %>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Fleet Management System</h1>
+            <nav>
+                <a href="./">Home</a>
+                <a href="#">Help</a>
+                <a href="#">About</a>
+                <a href="/logout" class="logout-btn">Logout</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="welcome">
+            <h2>Welcome to Your Vehicle Hub</h2>
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>Total Vehicles:</h3>
+                    <p><%= totalVehicles %></p>
+                </div>
+               
+          
+        </section>
+        
+        <section class="features">
+            <div class="button-group">
+                <a href="#" class="button" id="openModal">Register Vehicle</a>
+                <a href="/allvehicles" class="button">All Vehicles</a>
+                <label for="fileInput" class="custom-file-upload">
+                    Upload Excel File
+                </label>
+                <input type="file" id="fileInput" accept=".xlsx, .xls" />
+                <a href="#" class="button" id="exportExcelBtn">Export to Excel</a>
+                <a href="#" class="button" id="exportPdfBtn">Export to PDF</a>
+            </div>
+        </section>
+
+        <% if(successMessage == "1"){ %>
+        <div class="modal-overlay" id="modalOverlay" style="display: none;">
+            <div class="modal-content">
+                <span class="close-btn" id="closeModal">&times;</span>
+            </div>
+        </div>
+        <% } else if(successMessage == "2") { %>
+        <div class="success-overlay" id="successOverlay">
+            <div class="success-content">
+                <div class="success-popup">
+                    <h2>Vehicle Registration Successful!</h2>
+                    <p>Your vehicle has been registered successfully.</p>
+                    <div class="success-popup-buttons">
+                        <a href="/" class="btn btn-home">Return to Home Page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } else if (successMessage == "3") { %>
+        <div class="success-overlay" id="successOverlay">
+            <div class="success-content">
+                <div class="success-popup">
+                    <h2>Vehicle Updated Successfully!</h2>
+                    <p>Your vehicle has been updated successfully.</p>
+                    <a href="/" class="btn btn-register">See All Vehicles</a>
+                    <a href="/" class="btn btn-home">Return to Home Screen</a>
+                </div>
+            </div>
+        </div>
+        <% } %>
+
+        <div>
+            <h3>Vehicle Count Chart</h3>
+        
+            <!-- Color Legend -->
+            <div class="color-legend" id="colorLegend"></div>
+        
+            <div class="chart-container"> 
+                <canvas id="backgroundLines" class="background-lines"></canvas>
+                <canvas id="vehicleChart"></canvas>
+            </div>
+        
+            <!-- Pass the countedBrands data to the script through a hidden div -->
+            <div id="countedBrandsData" data-brands='<%= JSON.stringify(countedBrands) %>'></div>
+        
+            <script>
+                // Once the DOM is ready, read the data from the hidden div
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Get the countedBrands data from the hidden div's data attribute
+                    const countedBrands = JSON.parse(document.getElementById('countedBrandsData').getAttribute('data-brands'));
+                    console.log(countedBrands);
+                    // Create the chart using the countedBrands data
+                    const labels = countedBrands.map(item => item.brand);
+                    const dataCounts = countedBrands.map(item => item.count);
+        
+                    // Define different colors for each dataset
+                    const colors = [
+                        'rgba(255, 99, 132, 0.5)', // Red
+                        'rgba(54, 162, 235, 0.5)', // Blue
+                        'rgba(255, 206, 86, 0.5)', // Yellow
+                        'rgba(75, 192, 192, 0.5)', // Teal
+                        'rgba(153, 102, 255, 0.5)' // Purple
+                    ];
+        
+                    const ctx = document.getElementById('vehicleChart').getContext('2d');
+                    const vehicleChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        fill: true,
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Number of Vehicles',
+                                data: dataCounts,
+                                backgroundColor: colors.slice(0, countedBrands.length),
+                                borderColor: colors.slice(0, countedBrands.length).map(color => color.replace(/0.5/, '1')),
+                                borderWidth: 2 // Increased border width for graph lines
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false, // Allows the chart to adjust according to the container size
+                        }
+                    });
+        
+                    // Create color legend
+                    const colorLegend = document.getElementById('colorLegend');
+                    countedBrands.forEach((item, index) => {
+                        const colorDiv = document.createElement('div');
+                        colorDiv.style.backgroundColor = colors[index % colors.length];
+                        colorLegend.appendChild(colorDiv);
+                    });
+        
+                    // Draw background lines
+                    const bgCanvas = document.getElementById('backgroundLines');
+                    const bgCtx = bgCanvas.getContext('2d');
+                    bgCanvas.width = bgCanvas.offsetWidth;
+                    bgCanvas.height = bgCanvas.offsetHeight;
+        
+                    // Drawing grid lines
+                    bgCtx.strokeStyle = 'rgba(200, 200, 200, 0.5)'; // Light gray color
+                    bgCtx.lineWidth = 1;
+        
+                    // Vertical lines
+                    for (let x = 0; x <= bgCanvas.width; x += 20) {
+                        bgCtx.moveTo(x, 0);
+                        bgCtx.lineTo(x, bgCanvas.height);
+                    }
+        
+                    // Horizontal lines
+                    for (let y = 0; y <= bgCanvas.height; y += 20) {
+                        bgCtx.moveTo(0, y);
+                        bgCtx.lineTo(bgCanvas.width, y);
+                    }
+        
+                    bgCtx.stroke(); // Draw the lines
+                });
+            </script>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="registerScript.js"></script>
+</body>
