@@ -10,7 +10,7 @@
             <h2><%= title %></h2>
             <div class="error message"></div>
 
-            <form id="myForm">
+            <form id="myForm" method="POST" action="/login">
                 <% if (title == 'Sign Up') { %>
                     <div class="lastName error error-space"></div>
                     <div class="form-row">
