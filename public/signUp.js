@@ -4,8 +4,9 @@ const form = document.querySelector('#myForm'); // Ensure the correct selector i
 const emailError = document.querySelector('.email.error');
 const passwordError = document.querySelector('.password.error');
 const telephoneError = document.querySelector('.telephone.error');
+const button = document.querySelector('#submit2');
 // A Function to take values from the form
-form.addEventListener('submit',  async (e) => {
+button.addEventListener('click',  async (e) => {
     e.preventDefault(); // Prevents the page from refreshing
 
 

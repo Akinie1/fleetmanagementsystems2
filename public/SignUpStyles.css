@@ -168,7 +168,23 @@ span {
     cursor: pointer;
 }
 
+#submit2 {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
 #submit:hover {
+    background-color: var(--accent-purple);
+    color: var(--blue);
+    border: 1px solid var(--blue);
+}
+
+#submit2:hover {
     background-color: var(--accent-purple);
     color: var(--blue);
     border: 1px solid var(--blue);

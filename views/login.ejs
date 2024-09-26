@@ -10,7 +10,7 @@
             <h2><%= title %></h2>
             <div class="error message"></div>
 
-            <form id="myForm" method="POST">
+            <form id="myForm">
                 <% if (title == 'Sign Up') { %>
                     <div class="lastName error error-space"></div>
                     <div class="form-row">
@@ -32,7 +32,7 @@
                         <a href="./login" id="forgot-password">Already have an account?</a>
                         <a href="/resetPassword" id="forgot-password">Forgot Password?</a>
                     </div>
-                    <input type="submit" id="submit" value="Sign Up">
+                    <input type="button" id="submit2" value="Sign Up">
                 <% } else { %>
                     <p class="error message" style="color: red;"></p>
                     <div class="form-row">
@@ -50,7 +50,7 @@
                         <a href="./signup">Sign Up Free!</a> <br><br>
                         <a href="/resetPassword" id="forgot-password">Forgot Password?</a>
                     </div>
-                    <input type="submit" id="submit" value="Login">
+                    <input type="button" id="submit" value="Login">
                 <% } %>
             </form>
         </div>

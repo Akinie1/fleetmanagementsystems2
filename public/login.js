@@ -5,7 +5,7 @@ const form = document.querySelector('#myForm'); // Ensure the correct selector i
 const emailError = document.querySelector('.email.error');
 const passwordError = document.querySelector('.password.error');
 const wrongEmailOrPassword = document.querySelector('.error.message');
-
+const button  = document.querySelector('#submit');
 // Event listener to toggle password visibility
 togglePassword.addEventListener('click', () => {
     const inputType = password.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -16,10 +16,10 @@ togglePassword.addEventListener('click', () => {
 
 
 // Event listener for form submission
-form.addEventListener('submit', async (e) => {
+button.addEventListener('click', async (e) => {
     e.preventDefault(); // Prevents the page from refreshing
 
-    // Reset errors every time the submit button is pressed
+    // // Reset errors every time the submit button is pressed
     emailError.textContent = "";
     passwordError.textContent = "";
     wrongEmailOrPassword.textContent = "";
